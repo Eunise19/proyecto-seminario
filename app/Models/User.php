@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Historial;
+use App\Models\Cita;
+use App\Models\Medico;
+use App\Models\Servicio;
 
 class User extends Authenticatable
 {
@@ -17,7 +21,9 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
+     protected $table = 'users';
+     
+     protected $fillable = [
         'name',
         'alergia',
         'email',
@@ -45,4 +51,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function historiales(){
+        return $this->hasMany(Historial::class, 'id_pacientes');
+    }
+    public function citas(){
+        return $this->hasMany(Cita::class, 'id_pacientes');
+    }
+    public function medico(){
+        return $this->belongsTo(Medico::class, 'id_medicos');
+    }
+    public function servicio(){
+        return $this->belongsTo(Servicio::class, 'id_servicios');
+    }
 }

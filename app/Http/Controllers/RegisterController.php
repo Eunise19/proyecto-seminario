@@ -10,9 +10,10 @@ class RegisterController extends Controller
 {
     //
     public function create(){
-        return view ('auth.register');    }
+        return view ('auth.register');    
+    }
         
-        public function store(){
+    public function store(){
 
         $this->validate(request(),[
             'name' => 'required',
@@ -22,13 +23,10 @@ class RegisterController extends Controller
             'fecha_nacimiento' => 'required',
             'password' => 'required|confirmed'
         ]);
+    $user = User::create(request(['name','alergia','email','telefono','fecha_nacimiento','password']));
+    auth()-> login($user);
+    return redirect()->route('users.index');
 
-
-
-  $user = User::create(request(['name','alergia','email','telefono','fecha_nacimiento','password']));
-  auth()-> login($user);
-  return redirect()->route('users.index');
-
-        }
+    }
 }
 

@@ -85,20 +85,19 @@
         </div>
         <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
           
-          @foreach($users as $users)
+          
           <div class="row">
             <div class="col-lg-6">
               <ul>
                 
-                <li><i class="bi bi-chevron-right"></i> <th>Alergia:</th> <span> {{$users->alergia}}</span></li>
-                <li><i class="bi bi-chevron-right"></i> <th>Correo electronico:</th> <span> {{$users->email}}</span></li>
-                <li><i class="bi bi-chevron-right"></i> <th>Telefono:</th> <span> {{$users->telefono}}</span></li>
-                <li><i class="bi bi-chevron-right"></i> <th>Ciudad:</th> <span> Tupiza</span></li>
-                <li><i class="bi bi-chevron-right"></i> <th>Fecha de Nacimiento:</th> <span> {{$users->fecha_nacimiento}}</span></li>
+                <li><i class="bi bi-chevron-right"></i> <th>Alergia: </th> <span>&nbsp;{{ $usuario->alergia }} </span></li>
+                <li><i class="bi bi-chevron-right"></i> <th>Correo electronico: </th> <span>&nbsp;{{ $usuario->email }}</span></li>
+                <li><i class="bi bi-chevron-right"></i> <th>Telefono:</th> <span>&nbsp;{{$usuario->telefono }}</span></li>
+                <li><i class="bi bi-chevron-right"></i> <th>Fecha de Nacimiento: </th> <span>&nbsp;{{ $usuario->fecha_nacimiento }}</span></li>
               </ul>
             </div>
           </div>
-          @endforeach
+          
         </div>
       </div>
      
@@ -112,7 +111,7 @@
         <div class="col-lg-3 col-md-6">
           <div class="count-box">
             <i class="bi bi-emoji-smile"></i>
-            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="{{ count($usuario->historiales) }}" data-purecounter-duration="1" class="purecounter"></span>
             <p>Numero de Atenciones</p>
           </div>
         </div>
@@ -120,7 +119,7 @@
         <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
           <div class="count-box">
             <i class="bi bi-journal-richtext"></i>
-            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="{{ count($usuario->citas) }}" data-purecounter-duration="1" class="purecounter"></span>
             <p>Numero de citas</p>
           </div>
         </div>
@@ -130,7 +129,7 @@
 
   </section><!-- End About Section -->
 
-  <!-- ======= Resume Section ======= -->
+  <!-- ======= Historiales Section ======= -->
   <section id="resume" class="resume">
     <div class="container">
 
@@ -140,48 +139,25 @@
       
       <div class="row">
         <div class="col-lg-6">
-          <h3 class="resume-title">Historial 1</h3>
+        @if (count($historiales) > 0)
+          @php
+            $contador = 1;
+          @endphp
+          @foreach ($historiales as $historial)
           <div class="resume-item pb-0">
-            <h4>Servicio</h4>
-            <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
-            <p>
-            <ul>
-              <li>Portland par 127,Orlando, FL</li>
-              <li>(123) 456-7891</li>
-              <li>alice.barkley@example.com</li>
-            </ul>
-            </p>
+          <h3 class="resume-title">historial_0{{$contador}}</h3>
+            <h4>{{$historial->servicio->nombre}}</h4>
+            <h5>Doctor: {{$historial->medico->nombre_apellido}}</h5>
+            <p><em>DESCRIPCION: {{$historial->servicio->descripcion}}</em></p>
+            <h5>Fecha de consulta: {{$historial->fecha}}</h5>
           </div>
-
-          <h3 class="resume-title">Historial 2</h3>
-          <div class="resume-item pb-0">
-            <h4>Servicio</h4>
-            <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
-            <p>
-            <ul>
-              <li>Portland par 127,Orlando, FL</li>
-              <li>(123) 456-7891</li>
-              <li>alice.barkley@example.com</li>
-            </ul>
-            </p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <h3 class="resume-title">Historial 3</h3>
-          <div class="resume-item pb-0">
-            <h4>Servicio</h4>
-            <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
-            <p>
-            <ul>
-              <li>Portland par 127,Orlando, FL</li>
-              <li>(123) 456-7891</li>
-              <li>alice.barkley@example.com</li>
-            </ul>
-            </p>
-          </div>
-        </div>
-      </div>
-
+          @php
+            $contador++;
+          @endphp
+          @endforeach
+        @else
+          <p>No hay historiales médicos registrados para este usuario.</p>
+        @endif
     </div>
   </section><!-- End Resume Section -->
 
@@ -190,8 +166,34 @@
     <div class="container">
 
       <div class="section-title">
-        <h2>Reservar</h2>
-        <p>Cita</p>
+        <h2>Reservar citas</h2>
+        <p>Citas</p>
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre de Medico</th>
+              <th>Servicio</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            @php
+              $contador =1;
+            @endphp
+            @foreach ($citas as $cita)
+              <tr>
+                <td>Cita_0{{$contador}}</td>
+                <td>{{$cita->medico->nombre_apellido}}</td>
+                <td>{{$cita->servicio->nombre}}</td>
+                <td>{{$cita->fecha}}</td>
+              </tr>
+            @php
+              $contador++;
+            @endphp
+            @endforeach
+          </tbody>
+        </table>
       </div>
 
       <div class="row mt-2">
@@ -234,19 +236,33 @@
         </div>
       </div>
 
-      <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+      <form method="POST" action="{{route('cita.user')}}" role="form" class="php-email-form mt-4">
+      @csrf
         <div class="row">
-          <div class="col-md-6 form-group">
-            <input type="text" name="name" class="form-control" id="name" placeholder="Nombre Completo" required>
+          <div class="col-md-12 form-group mt-3 mt-md-0">
+          <label for="id_paciente">Paciente:</label>
+            <select name="id_pacientes" id="id_pacientes" class="form-control">
+              <option value="{{ auth()->user()->id }}">{{ auth()->user()->name }}</option>
+            </select>
           </div>
-          <div class="col-md-6 form-group mt-3 mt-md-0">
-            <input type="text" class="form-control" name="name" id="name" placeholder="Nombre del Doctor" required>
+          <div class="col-md-12 form-group mt-3 mt-md-0">
+          <label for="id_medico">Médico:</label>
+            <select name="id_medicos" id="id_medicos" class="form-control form-dark">
+            @foreach ($medicos as $medico)
+              <option value="{{ $medico->id }}">{{ $medico->nombre_apellido }}</option>
+            @endforeach
+            </select>
           </div>
         </div>
-        <div class="form-group mt-3">
-          <input type="text" class="form-control" name="subject" id="subject" placeholder="Seleccione el Servicio" required>
+        <div class="form-group mt-3 mt-md-0">
+          <label for="id_servicio">Servicio:</label>
+          <select name="id_servicios" id="id_servicios" class="form-control">
+          @foreach ($servicios as $servicio)
+            <option value="{{ $servicio->id }}">{{ $servicio->nombre }}</option>
+          @endforeach
+          </select>
         </div>
-        <div class="form-group mt-3">
+        <div class="form-groupmt mt-3">
           <input class="form-control" type="date" name="fecha" rows="5" placeholder="Fecha" required>
         </div>
         <div class="my-3">
@@ -254,7 +270,9 @@
           <div class="error-message"></div>
           <div class="sent-message">Your message has been sent. Thank you!</div>
         </div>
-        <div class="text-center"><button type="submit">Realizar reservacion</button></div>
+        <div class="text-center">
+          <button type="submit">Realizar reservacion</button>
+        </div>
       </form>
 
     </div>

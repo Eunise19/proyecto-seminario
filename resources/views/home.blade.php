@@ -76,7 +76,7 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="{{ route('login.index')}}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Iniciar Sesion</span></a>
+      <a href="{{ route('login.index') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Iniciar Sesion</span></a>
       <a href="{{ route('register.index')}}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Registrarse</span></a>
 
     </div>
@@ -230,7 +230,7 @@
 
         <div class="section-title">
           <h2>Servicios</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p></p>
         </div>
 
         <div class="row">
@@ -370,7 +370,7 @@
                 <p>Es nuestro cirujano oral y maxilofacial altamente experimentado. Se graduó con honores de la Facultad de Cirugía Oral y Maxilofacial de la Universidad Nacional y ha realizado numerosos procedimientos quirúrgicos con éxito.</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href="https://www.facebook.com/erickalvaro.benavidesvillarroel"><i class="ri-facebook-fill"></i></a>
                   <a href=""><i class="ri-instagram-fill"></i></a>
                   <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
                 </div>
@@ -554,7 +554,7 @@
       </div>
 
       <div>
-        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7427.177731439358!2d-65.71902250737917!3d-21.445399208211427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94072918a01fccd9%3A0x7db70a20fd2eb453!2sPlaza%20de%20la%20Independencia!5e0!3m2!1ses-419!2sbo!4v1694309693227!5m2!1ses-419!2sbo" frameborder="0" allowfullscreen></iframe>
       </div>
 
       <div class="container">
@@ -579,15 +579,9 @@
                 <h4>Telefono:</h4>
                 <p>+1 5589 55488</p>
               </div>
-
             </div>
-
           </div>
-
-          
-
         </div>
-
       </div>
     </section><!-- End Contact Section -->
 
@@ -612,7 +606,7 @@
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+            <h4>Use los links</h4>
             <ul>
               <li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
             <li><a class="nav-link scrollto" href="#about">Acerca de</a></li>
@@ -631,7 +625,7 @@
 
       <div class="me-md-auto text-center text-md-start">
         <div class="copyright">
-          &copy; Copyright <strong><span>Medilab</span></strong>. All Rights Reserved
+          &copy; Copyright <strong><span>OdontoChichas</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
           <!-- All the links in the footer should remain intact. -->
@@ -643,7 +637,7 @@
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
         <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.facebook.com/erickalvaro.benavidesvillarroel" class="facebook"><i class="bx bxl-facebook"></i></a>
         <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
         <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>

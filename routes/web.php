@@ -28,7 +28,6 @@ Route::get('/register', [RegisterController::class, 'create'])
 Route::post('/register', [RegisterController::class, 'store'])
 ->name('register.store');
 
-
 Route::get('/login', [SessionsController::class, 'create'])
 ->middleware('guest')
 ->name('login.index');
@@ -40,37 +39,70 @@ Route::get('/logout', [SessionsController::class, 'destroy'])
 ->middleware('auth')
 ->name('login.destroy');
 
-
 Route::get('/admin', [AdminController::class, 'index'])
 ->middleware('auth.admin')
 ->name('admin.index');
 
-Route::get('/doctor', [AdminController::class, 'doctor'])
-->name('admin.doctores.doctors');
+//loginDoctores
 
-Route::get('/addoctor', [AdminController::class, 'addoctor'])
-->name('admin.doctores.adddoctor');
+//doctores
+Route::get('/doctores', [AdminController::class, 'doctores'])
+    ->name('admin.doctores.doctors');
 
-Route::get('/pacientes', [AdminController::class, 'pacientes'])
-->name('admin.pacientes.pacients');
+Route::post('/doctores', [AdminController::class, 'storeDoctor'])
+    ->name('medicos.store');
 
-Route::get('/addpaciente', [AdminController::class, 'addpacientes'])
-->name('admin.pacientes.add-pacient');
+Route::get('/add-doctor', [AdminController::class, 'add_doctores'])
+    ->name('admin.doctores.add-doctor');
 
-Route::get('/servicio', [AdminController::class, 'servicios'])
-->name('admin.servicios.service');
+Route::get('/edit-doctor', [AdminController::class, 'edit_doctores'])
+    ->name('admin.doctores.edit-doctor');
 
-Route::get('/addservicio', [AdminController::class, 'addservicios'])
-->name('admin.servicios.add-service');
+//pacientes
+Route::get('/pacientes', [AdminController::class, 'paciente'])
+    ->name('admin.pacientes.paciente');
+Route::get('/add-paciente', [AdminController::class, 'add_paciente'])
+    ->name('pacientes.addpaciente');
+Route::get('/edit-paciente', [AdminController::class, 'edit_paciente'])
+    ->name('pacientes.edit-paciente');
+Route::post('/pacientes', [AdminController::class, 'storeUsers'])
+    ->name('user.store');
 
-Route::get('/cita', [AdminController::class, 'citas'])
-->name('admin.citas.cita');
+//servicios   
+Route::get('/servicios', [AdminController::class, 'servicio'])
+    ->name('servicios');
+Route::get('/add-servicio', [AdminController::class, 'add_servicio'])
+    ->name('add-servicios');
+Route::post('/servicios', [AdminController::class, 'storeServicio'])
+    ->name('servicio.store');
+Route::get('/edit-servicio', [AdminController::class, 'edit_servicio'])
+    ->name('edit-servicio');
 
-Route::get('/addcita', [AdminController::class, 'addcitas'])
-->name('admin.citas.add-cita');
+//citas
+Route::get('/citas', [AdminController::class, 'cita'])
+    ->name('citas');
+Route::get('/add-citas', [AdminController::class, 'add_cita'])
+    ->name('add-citas');
+Route::get('/edit-citas', [AdminController::class, 'edit_cita'])
+    ->name('edit-citas');
+Route::post('/citas', [AdminController::class, 'storeCita'])
+    ->name('cita.store');
 
+//historiales
+Route::get('/historial', [AdminController::class, 'historial'])
+    ->name('historiales');
+Route::get('/add-historial', [AdminController::class, 'add_historial'])
+    ->name('add-historiales');
+Route::get('/historial/{historial}/edit', [AdminController::class, 'edit_historial'])
+    ->name('edit-historiales');
+Route::post('/historial', [AdminController::class, 'storeHistorial'])
+    ->name('historial.store');
+Route::put('/historiales/{historial}', 'HistorialesController@updateHistorial')->name('historiales.update');
+
+//user page
 Route::get('/users', [UsersController::class, 'users'])
-->middleware('auth.users')
-->name('users.index');
-
+    ->middleware('auth.users')
+    ->name('users.index');
+Route::post('/users', [UsersController::class, 'reservarCita'])
+    ->name('cita.user');
 

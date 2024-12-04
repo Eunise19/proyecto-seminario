@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pacientes');
             $table->unsignedBigInteger('id_medicos');
             $table->unsignedBigInteger('id_servicios');
-            $table->foreign('id_pacientes')->references('id')->on('pacientes');
+            $table->foreign('id_pacientes')->references('id')->on('users');
             $table->foreign('id_medicos')->references('id')->on('medicos');
             $table->date('fecha')->nullable();
             $table->foreign('id_servicios')->references('id')->on('servicios');

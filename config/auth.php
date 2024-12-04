@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'medico' => [ // Nuevo guard para médicos
+            'driver' => 'session',
+            'provider' => 'medicos', // Usar el provider 'medicos' para el guard 'medico'
+        ],
     ],
 
     /*
@@ -63,6 +67,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'medicos' => [ // Nuevo provider para médicos
+            'driver' => 'eloquent',
+            'model' => App\Models\Medico::class, // Modelo Medico para el guard 'medico'
         ],
 
         // 'users' => [

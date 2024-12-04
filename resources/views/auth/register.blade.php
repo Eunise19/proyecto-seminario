@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input placeholder="Password confirmacion" id="password_confirmation" name="password_confirmation"type="password" class="form-control" >
+                    <input placeholder="Password confirmacion" id="password_confirmation" name="password_confirmation" type="password" class="form-control" >
                     <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                   </div>
 
